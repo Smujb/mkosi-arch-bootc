@@ -1,0 +1,3 @@
+disable bootc-fetch-apply-updates.timer
+
+enable uupd.timer
