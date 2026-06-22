@@ -35,8 +35,8 @@ sed -i -e 's, /root, /var/roothome,' /usr/lib/tmpfiles.d/provision.conf > /dev/n
 sed -i -e '/^d- \/var\/roothome /d' /usr/lib/tmpfiles.d/provision.conf > /dev/null
 
 # This goes along with the DBPath modification in pacman.conf to make `bootc usroverlay` work properly
-mkdir -p "/usr/lib/sysimage/lib/pacman"
-
+mkdir -p "/usr/lib/sysimage/lib"
+mv "/var/lib/pacman" "/usr/lib/sysimage/lib/pacman"
 
 # Make sure that pacman is using the DB from /usr/lib/sysimage rather than the one in /var 
 tee -a /etc/pacman.conf <<EOL

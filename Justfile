@@ -28,7 +28,7 @@ build-bootc $profiles=profiles:
         args="$args --profile $profile"
     done
 
-    mkosi -B --debug --profile=bootc ${args}
+    mkosi -B --debug ${args}
 
 lint:
     podman run --rm -it --entrypoint=bootc {{image}} container lint
