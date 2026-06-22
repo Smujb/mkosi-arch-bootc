@@ -1,5 +1,5 @@
-image_name := env("BUILD_IMAGE_NAME", "apollo")
-image := env("IMAGE_FULL", "apollo:latest")
+image_name := env("BUILD_IMAGE_NAME", "arch-bootc")
+image := env("IMAGE_FULL", "arch-bootc:latest")
 image_tag := env("BUILD_IMAGE_TAG", "latest")
 base_dir := env("BUILD_BASE_DIR", ".")
 filesystem := env("BUILD_FILESYSTEM", "ext4")
@@ -57,7 +57,7 @@ bootc *ARGS:
         -v "${BUILD_BASE_DIR:-.}:/data" \
         {{image}} bootc {{ ARGS }}
 
-# Generate a bootable .img file with Apollo installed
+# Generate a bootable .img file with the system installed
 generate-bootable-image $base_dir=base_dir $filesystem=filesystem:
     #!/usr/bin/env bash
     if [ ! -e "${base_dir}/bootable.img" ] ; then
@@ -84,7 +84,7 @@ run-shell *ARGS:
         --security-opt label=type:unconfined_t \
         "{{image}}" bash
 
-# Rechunk the final Apollo image with Chunkah
+# Rechunk the final image with Chunkah
 rechunk: 
     #!/bin/bash
     IMG="{{image}}"
